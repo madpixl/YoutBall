@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+body {
+	width: auto;
+	font-family: Arial, Helvetica, sans-serif;
+}
+label {
+	margin: 2px;
+	float: left;
+	white-space: nowrap;
+	width: 190px;
+	font-size: 11px;
+	color: #000077;
+	text-align: left;
+}
+label input {
+	float: right;
+}
+ @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+ width:320px;
+}
+/* CSS overrides for mobile here */
+}
+.button-group {
+	clear: both;
+	margin: 1em;
+	wiidth: 100%;
+	text-align: center;
+}
+br {
+	clear: both;
+}
+ul {
+	float: left;
+	list-style: none;
+	width: 11%;
+	min-width: 230px;
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+}
+#container {
+	float: left;
+	width: 100%;
+	height: auto;
+	min-height: 30px;
+}
+li {
+	border: solid 1px #aaa;
+	margin: .25em;
+	padding: 1em;
+	width: auto;
+}
+li:first-child {
+	font-weight: bold;
+	background-color: #99aaff;
+	border-bottom: solid 2px;
+}
+</style>
+<script language="javascript">
+
+function drawGrid() { 
+
+var j=0;
+target = document.forms[0].getElementsByTagName('input');
+player = new Array();
+
+for(var i=0; i<target.length; i++) {
+	if (target[i].value) {
+	player[j] = target[i].value;
+		j++;
+	}
+}
+
+	if (player.length > 0) {
+		players = player.length;
+		container = document.getElementById('container');
+		container.innerHTML = "";
+		period =1;
+		columns = 8;
+		positions = 0;
+		loops = Math.round(columns / players) + 1;
+		ul = document.createElement('ul');
+		lititle = document.createElement('li');
+		lititle.innerHTML = "Period "+period;
+		ul.appendChild(lititle);
+
+// fill 40 columns
+
+			while(columns > 0) {
+			//loop through players
+
+				for (var ii=0; ii<player.length; ii++){ 
+				 if( positions == 5 ) { 
+					  if (columns>0) { 
+						container.appendChild(ul);
+						columns--;	
+						period++;
+						ul = document.createElement('ul');
+						ul.setAttribute('id','row-'+positions);
+						lititle = document.createElement('li');
+						lititle.innerHTML = "Period "+period;
+						ul.appendChild(lititle);
+						positions=0;
+					}  
+				 }
+
+					li = document.createElement('li');
+					li.setAttribute('id','t'+ii);
+					li.innerHTML= player[ii];
+					ul.appendChild(li);
+					
+				if(ii == player.length) {
+					ii=0;	
+				}   
+					positions++;
+			} 
+		}
+	}
+		return false;
+//		alert(container.innerHTML);
+ }
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Player rotation</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <fieldset>
+    <legend>Enter players and click Submit to generate rotation.</legend>
+    <label for="p1">P. 1:
+      <input type="text" name="p1" id="p1" />
+    </label>
+    <label for="p2">P. 2:
+      <input type="text" name="p2" id="p2" />
+    </label>
+    <label for="p3">P. 3:
+      <input type="text" name="p3" id="p3" />
+    </label>
+    <label for="p4">P. 4:
+      <input type="text" name="p4" id="p4" />
+    </label>
+    <label for="p5"> P. 5:
+      <input type="text" name="p5" id="p5" />
+    </label>
+    <label for="p6">P. 6:
+      <input type="text" name="p6" id="p6" />
+    </label>
+    <label for="p7">P. 7:
+      <input type="text" name="p7" id="p7" />
+    </label>
+    <label for="p8">P. 8:
+      <input type="text" name="p8" id="p8" />
+    </label>
+    <label for="p9">P. 9:
+      <input type="text" name="p9" id="p9" />
+    </label>
+    <label for="p10">P. 10:
+      <input type="text" name="p10" id="p10" />
+    </label>
+    <label for="p11">P. 11:
+      <input type="text" name="p11" id="p11" />
+    </label>
+    <label for="p12">P. 12:
+      <input type="text" name="p12" id="p12" />
+    </label>
+  </fieldset>
+  <p class="button-group">
+    <button type="button" name="gen" id="gen" onclick="drawGrid()" value="Submit">Submit</button>
+    <button type="reset" name="Reset" id="button" value="Reset">Reset</button>
+  </p>
+</form>
+<div id="container"> Game Rotation </div>
+</body>
+</html>
