@@ -39,19 +39,29 @@
 
 .delete
 {
-	border:solid 1px #333;
-	margin:2px;
-	padding:2px;
-	width:18px;
-	height:18px;
+	border:solid 1px #aaa;
+	background-color:#aaaaaa
+	margin:1px;
+	padding:1px;
+	width:16px;
+	height:16px;
 	display:block;
 	float:right;
-	right:1px;
+	right:0;
 	top:1px;
 	text-align:center;
 	z-index:1;
-	cursor: pointer;
-	border-radius: 4;
+	cursor:pointer;
+	border-radius:4px;
+	font-size:smaller;
+	border-right-width:2px;
+	border-bottom-width:2px;
+
+}
+.delete:hover {
+	background-color:#eeeeee;
+	border-right-width:1px;
+	border-bottom-width:1px;
 
 }
 .connectedSortable li:hover
@@ -69,6 +79,7 @@ background-color:#ffffaa;
 <div id="addNoders" style="padding:2em;clear:both;width:100%;">
 <h5>Arrange this unsorted functionality into logical groups. </h5>
 <ul style="font-size:10px;">
+<li>Arrange this unsorted functionality into logical groups. </li>	
 <li>Take a screenshot of your sort and paste it into powerpoint. Don't refresh. </li>
 <li>I will compile them and bring it to the stamp meeting. We will name each grouping in the stamp.</li>
  <li>If you need more than 6 groups, you can create a divider with the <b>Add Item</b> tool.  </li> 
@@ -81,70 +92,70 @@ background-color:#ffffaa;
  
 <div id=cards style="width:100%">
 <ul id="sortable1" class="connectedSortable">
-  <li class="ui-state-default">Issue Plates<span class="delete">X</span></li>
-    <li class="ui-state-default">Issue Temp Tags<span class="delete">X</span></li>
-  <li class="ui-state-default">Vehicle Inquiry<span class="delete">X</span></li>
-    <li class="ui-state-default">Customer Inquiry<span class="delete">X</span></li>
-  <li class="ui-state-default">List All Trx.<span class="delete">X</span></li>
-  <li class="ui-state-default">List Filtered Trx.<span class="delete">X</span></li>
-    <li class="ui-state-default">Problem Inventory <span class="delete">X</span></li>
-     <li class="ui-state-default">Create a Trx. Detail Report<span class="delete">X</span></li>
+  <li class="ui-state-default">Issue Plates<span class="delete" title="remove item">X</span></li>
+    <li class="ui-state-default">Issue Temp Tags<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Vehicle Inquiry<span class="delete" title="remove item">X</span></li>
+    <li class="ui-state-default">Customer Inquiry<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">List All Trx.<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">List Filtered Trx.<span class="delete" title="remove item">X</span></li>
+    <li class="ui-state-default">Problem Inventory <span class="delete" title="remove item">X</span></li>
+     <li class="ui-state-default">Create a Trx. Detail Report<span class="delete" title="remove item">X</span></li>
 </ul>
  
 <ul id="sortable2" class="connectedSortable">
-  <li class="ui-state-default">Order Inventory<span class="delete">X</span></li>
-  <li class="ui-state-default">About OLRS<span class="delete">X</span></li>
-  <li class="ui-state-default">User Prefs<span class="delete">X</span></li>
-  <li class="ui-state-default">View Bulletins<span class="delete">X</span></li>
-  <li class="ui-state-default">Inventory On Hand<span class="delete">X</span></li>
-   <li class="ui-state-default">View Trx. Summary[s]<span class="delete">X</span></li>
+  <li class="ui-state-default">Order Inventory<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">About OLRS<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">User Prefs<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">View Bulletins<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Inventory On Hand<span class="delete" title="remove item">X</span></li>
+   <li class="ui-state-default">View Trx. Summary[s]<span class="delete" title="remove item">X</span></li>
 
 </ul>
 
 <ul id="sortable3" class="connectedSortable">
-  <li class="ui-state-default">Batch Process<span class="delete">X</span></li>
-  <li class="ui-state-default">Trx. Detail<span class="delete">X</span></li>
-  <li class="ui-state-default">DMS Write-back<span class="delete">X</span></li>
-    <li class="ui-state-default">Documents<span class="delete">X</span></li>
-  <li class="ui-state-default">Add A Trx.<span class="delete">X</span></li>
-  <li class="ui-state-default">Add Owner<span class="delete">X</span></li>
-  <li class="ui-state-default">Verify Address<span class="delete">X</span></li>
-    <li class="ui-state-default">Set up Messaging<span class="delete">X</span></li>
+  <li class="ui-state-default">Batch Process<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Trx. Detail<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">DMS Write-back<span class="delete" title="remove item">X</span></li>
+    <li class="ui-state-default">Documents<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Add A Trx.<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Add Owner<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Verify Address<span class="delete" title="remove item">X</span></li>
+    <li class="ui-state-default">Set up Messaging<span class="delete" title="remove item">X</span></li>
 </ul>
 <ul id="sortable4" class="connectedSortable">
-  <li class="ui-state-default">View Fees<span class="delete">X</span></li>
-  <li class="ui-state-default">Edit Lender List<span class="delete">X</span></li>
-  <li class="ui-state-default">DMV Online Hours<span class="delete">X</span></li>
-  <li class="ui-state-default">Inquiries <span class="delete">X</span></li>
-  <li class="ui-state-default">Setup Inventory<span class="delete">X</span></li>
-  <li class="ui-state-default">Printer Setup<span class="delete">X</span></li>
-    <li class="ui-state-default">Contact Support<span class="delete">X</span></li>
+  <li class="ui-state-default">View Fees<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Edit Lender List<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">DMV Online Hours<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Inquiries <span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Setup Inventory<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Printer Setup<span class="delete" title="remove item">X</span></li>
+    <li class="ui-state-default">Contact Support<span class="delete" title="remove item">X</span></li>
 </ul>
  <ul id="sortable5" class="connectedSortable">
-  <li class="ui-state-default">View Deal History<span class="delete">X</span></li>
-  <li class="ui-state-default">DMS Import<span class="delete">X</span></li>
-  <li class="ui-state-default">Add Lessor<span class="delete">X</span></li>
-  <li class="ui-state-default">Add Lessee<span class="delete">X</span></li>
-  <li class="ui-state-default">Custom Report<span class="delete">X</span></li>
-  <li class="ui-state-default">Print Documents<span class="delete">X</span></li>
-   <li class="ui-state-default">Remote Support<span class="delete">X</span></li>
-   <li class="ui-state-default">Create a Trans Export Report<span class="delete">X</span></li>
+  <li class="ui-state-default">View Deal History<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">DMS Import<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Add Lessor<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Add Lessee<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Custom Report<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Print Documents<span class="delete" title="remove item">X</span></li>
+   <li class="ui-state-default">Remote Support<span class="delete" title="remove item">X</span></li>
+   <li class="ui-state-default">Create a Trans Export Report<span class="delete" title="remove item">X</span></li>
 </ul>
  <ul id="sortable6" class="connectedSortable">
-  <li class="ui-state-default">View Inventory<span class="delete">X</span></li>
-  <li class="ui-state-default">Go to DMV site<span class="delete">X</span></li>
-  <li class="ui-state-default">Manage Inventory<span class="delete">X</span></li>
-  <li class="ui-state-default">Find Lessor<span class="delete">X</span></li>
-  <li class="ui-state-default">User Admin<span class="delete">X</span></li>
-  <li class="ui-state-default">Manage Shipping<span class="delete">X</span></li>
+  <li class="ui-state-default">View Inventory<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Go to DMV site<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Manage Inventory<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Find Lessor<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">User Admin<span class="delete" title="remove item">X</span></li>
+  <li class="ui-state-default">Manage Shipping<span class="delete" title="remove item">X</span></li>
  
 </ul>
  <ul id="sortable7" class="connectedSortable">
-   <li class="ui-state-default">Print Documents<span class="delete">X</span></li>
-   <li class="ui-state-default">Remote Support<span class="delete">X</span></li>
-   <li class="ui-state-default">Create a Trans Export Report<span class="delete">X</span></li>
-    <li class="ui-state-default">View Inventory Snapshot<span class="delete">X</span></li>
-      <li class="ui-state-default">Contact Admin<span class="delete">X</span></li>
+   <li class="ui-state-default">Print Documents<span class="delete" title="remove item">X</span></li>
+   <li class="ui-state-default">Remote Support<span class="delete" title="remove item">X</span></li>
+   <li class="ui-state-default">Create a Trans Export Report<span class="delete" title="remove item">X</span></li>
+    <li class="ui-state-default">View Inventory Snapshot<span class="delete" title="remove item">X</span></li>
+      <li class="ui-state-default">Contact Admin<span class="delete" title="remove item">X</span></li>
 </ul>
 </div>
 
