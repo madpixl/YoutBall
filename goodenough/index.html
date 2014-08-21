@@ -67,12 +67,20 @@
          <h2>Join Us.</h2>  
 	</div>
 </div>
+
 </section>
+<div id="mineclick" onclick="playsnd()">&nbsp;</div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
 <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
 <script>
-var snd = new Audio("snd/ocean.mp3"); // buffers automatically when created
+var snd = new Audio("snd/ocean.mp3");  
 snd.play();
+function playsnd() {
+	 
+var snd2 = new Audio("snd/mine.mp3"); 	
+snd2.play();
+}
+
 </script>
 
  
