@@ -1,11 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<html>
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <style>
 body {
 	width: auto;
 	font-family: Arial, Helvetica, sans-serif;
+	background-color:#ffffff;
 }
 label {
 	margin: 2px;
@@ -22,7 +23,6 @@ label input {
  @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
  width:320px;
 }
-/* CSS overrides for mobile here */
 }
 .button-group {
 	clear: both;
@@ -42,7 +42,7 @@ ul {
 	padding: 0;
 	font-size: 100%;
 }
-#container {
+#container-rotation {
 	float: left;
 	width: 100%;
 	height: auto;
@@ -59,75 +59,148 @@ li:first-child {
 	background-color: #99aaff;
 	border-bottom: solid 2px;
 }
+@media print {
+#form1 {
+	display: none;
+}
+#container-rotation {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	width: 900px; /* width: 7in; */
+	height: 670px; /* or height: 9.5in; */
+	clear: both;
+	background-color:#ffffff;
+	page-break-after: always;
+	position: relative;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+#container-rotation ul {
+	min-width: 12%;
+}
+}
 </style>
 <script language="javascript">
 
 function drawGrid() { 
 
 var j=0;
+
 target = document.forms[0].getElementsByTagName('input');
+
 player = new Array();
 
 for(var i=0; i<target.length; i++) {
+
 	if (target[i].value) {
+
 	player[j] = target[i].value;
+
 		j++;
+
 	}
+
 }
 
 	if (player.length > 0) {
+
 		players = player.length;
-		container = document.getElementById('container');
+
+		container = document.getElementById('container-rotation');
+
 		container.innerHTML = "";
+
 		period =1;
+
 		columns = 8;
+
 		positions = 0;
+
 		loops = Math.round(columns / players) + 1;
+
 		ul = document.createElement('ul');
+
 		lititle = document.createElement('li');
-		lititle.innerHTML = "Period "+period;
-		ul.appendChild(lititle);
 
-// fill 40 columns
+		 lititle.innerHTML = "Period "+period;
 
-			while(columns > 0) {
-			//loop through players
+			 ul.appendChild(lititle);
 
-				for (var ii=0; ii<player.length; ii++){ 
-				 if( positions == 5 ) { 
-					  if (columns>0) { 
-						container.appendChild(ul);
-						columns--;	
-						period++;
-						ul = document.createElement('ul');
-						ul.setAttribute('id','row-'+positions);
-						lititle = document.createElement('li');
-						lititle.innerHTML = "Period "+period;
-						ul.appendChild(lititle);
-						positions=0;
-					}  
-				 }
+			 
 
-					li = document.createElement('li');
-					li.setAttribute('id','t'+ii);
-					li.innerHTML= player[ii];
-					ul.appendChild(li);
-					
-				if(ii == player.length) {
-					ii=0;	
-				}   
-					positions++;
-			} 
+		// fill 40 columns
+
+				while(columns > 0) {
+
+					//loop through players
+
+						for (var ii=0; ii<player.length; ii++){
+
+						       
+
+								 if( positions == 5 ) {
+
+									  if (columns>0) { 
+
+										container.appendChild(ul);
+
+										columns--;	
+
+										period++;
+
+										ul = document.createElement('ul');
+
+										ul.setAttribute('id','row-'+positions);
+
+										lititle = document.createElement('li');
+
+										lititle.innerHTML = "Period "+period;
+
+										ul.appendChild(lititle);
+
+										positions=0;
+
+										}  
+
+								 }
+
+								li = document.createElement('li');
+
+								li.setAttribute('id','t'+ii);
+
+								li.innerHTML= player[ii];
+
+								ul.appendChild(li);
+
+							if(ii == player.length) {
+
+							ii=0;	
+
+							}  
+
+							positions++;
+
+							
+
+						 } 
+
+				}
+
 		}
-	}
-		return false;
-//		alert(container.innerHTML);
- }
-</script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Player rotation</title>
-</head>
 
+		return false;
+
+	//	alert(container.innerHTML);
+
+ }
+ 
+</script>
+
+<title>8 Period Player Rotation</title>
+</head>
 <body>
 <form id="form1" name="form1" method="post" action="">
   <fieldset>
@@ -174,6 +247,6 @@ for(var i=0; i<target.length; i++) {
     <button type="reset" name="Reset" id="button" value="Reset">Reset</button>
   </p>
 </form>
-<div id="container"> Game Rotation </div>
+<div id="container-rotation"> Game Rotation </div>
 </body>
 </html>
