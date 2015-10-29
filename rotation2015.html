@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap - Prebuilt Layout</title>
+<link href="//bootstrap-themes.github.io/dashboard" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<style>
+button
+{
+   margin: .5em .15em;
+}
+.container li
+{
+   margin: 0;
+}
+.container ul
+{
+   padding: 0;
+   min-height: 100px;
+}
+.lineups ul
+{
+   padding: 0;
+   list-style: none;
+   background-color: light-steel-blue;
+   border: solid 1px #333333;
+}
+.lineups ul li
+{
+   margin: 0;
+   background-color: #ffffff;
+   clear: both;
+   width: 100%;
+   padding: 5px;
+   border: solid 1px #333333;
+   list-style: none;
+}
+.panel-header
+{
+   font-size: 1.2em;
+   line-height: 1.5em;
+   padding: .5em;
+}
+.players ul
+{
+   background-color: #eeeeee;
+   list-style: none;
+}
+.players ul li:hover
+{
+   background-color: #aaff6e;
+   list-style: none;
+   cursor: pointer;
+}
+.lime
+{
+   background-color: lime;
+}
+.gold
+{
+   background-color: gold;
+}
+.lightblue
+{
+   background-color: lightblue;
+}
+.periods ul li
+{
+    
+   border: solid 1px #666666;
+   text-align: center;
+   list-style: none;
+   margin: 0;
+   display: block;
+   clear: both;
+   padding: .5em .25em;
+   line-height: 1.3em;
+   font-size: 1.1em;
+   text-align: left;
+}
+#generate
+{
+   float: right;
+}
+</style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">Bootstrap</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="butt-team">lightblue</button>
+        <button class="butt-team">gold</button>
+        <button class="butt-team">forest</button>
+        <button class="butt-team">orange</button>
+        <button class="butt-team">silver</button>
+        <button class="butt-team">lime</button>
+        <button class="butt-team">black</button>
+        <button class="butt-team">maroon</button>
+      </div>
+    </div>
+    <div class="row lineups players">
+      <div class="text-center col-md-6">
+        <h3>Team <span id="team-color"></span></h3>
+        <ul id="sortable1" class="droptrue source">
+        </ul>
+      </div>
+      <div class="col-md-6 lineups">
+        <h3>Selected</h3>
+        <ul id="sortable2" class="droptrue target">
+        </ul>
+        <button id="generate">Go</button>
+        <button id="reset">Reset</button>
+      </div>
+    </div>
+    <div id="periods" class="periods">
+    </div>
+    <hr>
+  </div>
+</div>
+<script>
+$(".source li").click(function() {
+  $(".target li").append($(this));
+});
+$(".target li").click(function() {
+  $(".source li").append($(this));
+});
+
+$("#reset").click( function() { 
+    $("#sortable2").empty(); 
+     $("#periods").empty();
+    $("#reset").hide(); 
+    $("#generate").show();
+});
+
+ $("#generate").click( function() { 
+     if($("#sortable2 li").length >0 ) {
+         $("#periods").empty();
+         $("#generate").hide();
+         $("#reset").show();
+          
+      var players=0;
+      var per = 1; 
+      
+        $( "#periods" ).append('<div class="panel panel-primary"><div class="panel-header">Period '+per+'</div><ul class="panel-body" id="period-'+per+'"></ul></div>');
+   for(var j=0; j<40;) {   
+    
+       $("#sortable2 li").each(function() {
+         if ( per < 9) { 
+             if (players == 5) { 
+              if (per<8) {
+              console.log("period="+(++per)); 
+              $( "#periods" ).append('<div class="panel panel-primary"><div class="panel-header">Period '+per+'</div><ul <ul class="panel-body" id="period-'+per+'"></ul></div>');
+              
+              }
+              players = 0;  
+             } 
+         }
+         if (j<40) {
+         console.log($(this).text() + "j"+(++j));  
+         $("#period-"+per).append("<li>"+ $(this).text()+"</li>");
+         }
+         //5 players on the floor 
+         players++;  
+       });
+    }
+     
+     $("#sortable1").empty();
+      $("#sortable2").empty();
+     }// end if not empty li
+  });
+ 
+  $(function() {
+     
+    $("#reset").hide();  
+var lightblue = "<li>A, Adam</li><li>A, Tristan</li><li>D, Christopher</li><li>G, Shane</li><li>G, Jack</li><li>H, Zachary</li><li>H, Sammy</li><li>S, Ryan</li><li>Z, Harrison</li>"; 
+var gold ="<li> C, Mason</li><li> C, Matthew</li><li> H, Bobby</li><li> L, Collin</li><li> L, Evan</li><li> M, Logan</li><li> O, Nik</li><li> S, Aj</li><li> U, Tanner</li>";
+var forest = "<li> B, Hunter </li><li>G, Samuel </li><li>I, Michael </li><li> K, Peter </li><li>M, Shane </li><li> M, Aidan </li><li> P, Joey </li><li> R, Paedar </li><li> U, Clayton </li>";
+var orange ="<li>A, John </li><li> C, Andrew </li><li> G, Edward </li><li> M, Walker </li><li> P, Jack </li><li> R, Collin </li><li> R, Henry </li><li> S, Jack </li>";
+var silver = "<li>B, Aidan </li><li>C, Mark </li><li>D, Ethan </li><li>H, Thomas </li><li>H, Sam </li><li>M, Jordan </li><li>M, Ronan </li><li>T, Niko </li><li>T, Ryan </li>";
+var lime = "<li>C, Joey</li><li> F, Nathan</li><li> G, Evan</li><li> J, Brady</li><li> K, Ryan</li><li> M, Michael</li><li> M, Vincent</li><li> M, Michael</li><li> M, Jake</li>";
+var black = "<li> Celotto, Nicholas</li><li> Ciocca, Jake</li><li> D'Anna, Salvatore</li><li> Derda, Ian</li><li> Ippolito, Anthony</li><li> Masotti, Robert</li><li> Putnam, Kyle</li><li> Samu, Rayaan</li><li> Thomas, Cooper</li>";
+var maroon ="<li>Chapman, Evan</li><li> Harris, Caleb</li><li> McDermott, Aedan</li><li> Mirrione, Joseph</li><li> Spalding, Cole</li><li> Spalding, Evan</li><li> St. Denis, Drew</li><li> Tandler, Jackson</li><li> Wickam-White, Dylan</li>";
+      
+ ///dragon drops       
+    $( "ul.droptrue" ).sortable({
+      connectWith: "ul",
+       connectWith: "ul"
+    });
+ 
+    $( "ul.dropfalse" ).sortable({
+      connectWith: "ul",
+      dropOnEmpty: false
+    });
+ 
+    $( "#sortable1, #sortable2").disableSelection();
+  
+  //source list for teams
+  $(".butt-team").click(function() {
+     $("#team-color").text($(this).text());
+      
+    var teamname = eval($(this).text());
+   $("#sortable1").empty();
+   //$("#sortable2").empty();
+   $("#sortable1").append(teamname);
+   $(".source li").click(function() {
+        $('#sortable2').append($(this)); 
+        });
+  });
+  
+});  
+ </script>
+</body>
+</html>
