@@ -162,7 +162,7 @@ $("#reset").click( function() {
       var players=0;
       var per = 1; 
       
-        $( "#periods" ).append('<div class="panel panel-primary"><div class="panel-header">Period '+per+'</div><ul class="panel-body" id="period-'+per+'"></ul></div>');
+        $( "#periods" ).append('<div class="panel panel-primary"><div class="panel-header '+$("#team-color").text()+'">Period '+per+'</div><ul class="panel-body" id="period-'+per+'"></ul></div>');
    for(var j=0; j<40;) {   
     
        $("#sortable2 li").each(function() {
@@ -170,7 +170,7 @@ $("#reset").click( function() {
              if (players == 5) { 
               if (per<8) {
               console.log("period="+(++per)); 
-              $( "#periods" ).append('<div class="panel panel-primary"><div class="panel-header">Period '+per+'</div><ul <ul class="panel-body" id="period-'+per+'"></ul></div>');
+              $( "#periods" ).append('<div class="panel panel-primary"><div class="panel-header '+$("#team-color").text()+ '">Period '+per+'</div><ul <ul class="panel-body" id="period-'+per+'"></ul></div>');
               
               }
               players = 0;  
