@@ -79,6 +79,28 @@ button
 {
    background-color: lightblue;
 }
+.orange
+{
+   background-color: orange;
+}
+.black
+{
+   background-color: black;
+   color:yellow;
+}
+.forest {
+      background-color: forestgreen;
+   color:white;
+}
+.silver {
+      background-color: #cccccc;
+    
+}
+.maroon {
+      background-color: maroon;
+    color:white;
+}
+
 .periods ul li
 {
     
@@ -223,8 +245,13 @@ var maroon ="<li>Chapman, Evan</li><li> Harris, Caleb</li><li> McDermott, Aedan<
    $("#sortable1").empty();
    //$("#sortable2").empty();
    $("#sortable1").append(teamname);
-   $(".source li").click(function() {
+   
+    $(".source li").click(function() {
         $('#sortable2').append($(this)); 
+        });
+        
+   $(".target li").click(function() {
+        $('#sortable1').append($(this)); 
         });
   });
   
