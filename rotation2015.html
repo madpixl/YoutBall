@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap - Prebuilt Layout</title>
+<title>Team Rotation</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -119,6 +119,10 @@ button
 {
    float: right;
 }
+#reset
+{
+   float: right;
+}
 </style>
 </head>
 <body>
@@ -148,7 +152,7 @@ button
         </ul>
       </div>
       <div class="col-md-6 lineups">
-        <h3>Selected</h3>
+        <h3>Selected Players</h3>
         <ul id="sortable2" class="droptrue target">
         </ul>
         <button id="generate">Go</button>
@@ -164,21 +168,20 @@ button
 $(".source li").click(function() {
   $(".target li").append($(this));
 });
-$(".target li").click(function() {
+$("#sortable2 li").click(function() {
   $(".source li").append($(this));
 });
 
-$("#reset").click( function() { 
-    $("#sortable2").empty(); 
+$("#reset").click( function() {  
      $("#periods").empty();
     $("#reset").hide(); 
     $("#generate").show();
+    $(".source").empty();
 });
 
  $("#generate").click( function() { 
      if($("#sortable2 li").length >0 ) {
-         $("#periods").empty();
-         $("#generate").hide();
+         $("#periods").empty(); 
          $("#reset").show();
           
       var players=0;
