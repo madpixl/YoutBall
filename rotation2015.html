@@ -129,7 +129,7 @@ button
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1 class="text-center">Bootstrap</h1>
+      <h1 class="text-center">7th Grade Player Rotation</h1>
     </div>
   </div>
   <div class="container">
@@ -143,6 +143,7 @@ button
         <button class="butt-team">lime</button>
         <button class="butt-team">black</button>
         <button class="butt-team">maroon</button>
+        <button class="pull-right show-hide">-</button>
       </div>
     </div>
     <div class="row lineups players">
@@ -165,17 +166,19 @@ button
   </div>
 </div>
 <script>
+//Move things back and forth
 $(".source li").click(function() {
   $(".target li").append($(this));
 });
 $("#sortable2 li").click(function() {
   $(".source li").append($(this));
 });
-
+// Reset should empty select Players
 $("#reset").click( function() {  
-     $("#periods").empty(); 
-     $(".source").empty(); 
-     $("#sortable2").empty();
+     $("#periods").empty();
+      $("#generate").show();
+    $(".source").empty();
+    $(".target").empty();
 });
 
  $("#generate").click( function() { 
@@ -187,8 +190,8 @@ $("#reset").click( function() {
       var per = 1; 
       
         $( "#periods" ).append('<div class="panel panel-primary"><div class="panel-header '+$("#team-color").text()+'">Period '+per+'</div><ul class="panel-body" id="period-'+per+'"></ul></div>');
-   for(var j=0; j<40;) {   
-    
+   
+    for(var j=0; j<40;) {  
        $("#sortable2 li").each(function() {
          if ( per < 9) { 
              if (players == 5) { 
@@ -255,6 +258,16 @@ var maroon ="<li>Chapman, Evan</li><li> Harris, Caleb</li><li> McDermott, Aedan<
    $(".target li").click(function() {
         $('#sortable1').append($(this)); 
         });
+  });
+  //minimize team list
+  $("#show-hide").click(function() {
+     if($("#show-hide").text() === "-") { 
+      $(".lineups").hide();
+      $("#show-hide").text("+");
+     } else  if($("#show-hide").text() === "+") { 
+      $(".lineups").show();
+      $("#show-hide").text("-");
+     }   
   });
   
 });  
