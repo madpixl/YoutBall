@@ -1,4 +1,4 @@
-YoutBall
+Yout-BBall
 ========
 
-Test site for scripts
+A dev repository for rec basketball scripts and tools.
