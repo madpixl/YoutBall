@@ -83,27 +83,31 @@ button
 {
    background-color: orange;
 }
+.yellow
+{
+   background-color: yellow;
+}
 .black
 {
    background-color: black;
-   color:yellow;
+   color: yellow;
 }
-.forest {
-      background-color: forestgreen;
-   color:white;
+.forest
+{
+   background-color: forestgreen;
+   color: white;
 }
-.silver {
-      background-color: #cccccc;
-    
+.silver
+{
+   background-color: #cccccc;
 }
-.maroon {
-      background-color: maroon;
-    color:white;
+.maroon
+{
+   background-color: maroon;
+   color: white;
 }
-
 .periods ul li
 {
-    
    border: solid 1px #666666;
    text-align: center;
    list-style: none;
@@ -158,6 +162,7 @@ button
         </ul>
         <button id="generate">Go</button>
         <button id="reset">Reset</button>
+        <span class="alert"></span>
       </div>
     </div>
     <div id="periods" class="periods">
@@ -169,20 +174,31 @@ button
 //Move things back and forth
 $(".source li").click(function() {
   $(".target li").append($(this));
+  $(".alert").text("");  
 });
+
 $("#sortable2 li").click(function() {
   $(".source li").append($(this));
+  $(".alert").text(""); 
 });
+
+
 // Reset should empty select Players
 $("#reset").click( function() {  
      $("#periods").empty();
       $("#generate").show();
     $(".source").empty();
     $(".target").empty();
+     $(".alert").text(""); 
 });
 
- $("#generate").click( function() { 
-     if($("#sortable2 li").length >0 ) {
+//Generate rotation - herewego
+ $("#generate").click( function() {
+     if($("#sortable2 li").length < 6 ) {
+     $(".alert").text("You don't need a rotation with 5 players or less"); 
+     }
+     if($("#sortable2 li").length > 5 ) {
+          $(".alert").text("");
          $("#periods").empty(); 
          $("#reset").show();
           
@@ -217,58 +233,65 @@ $("#reset").click( function() {
      }// end if not empty li
   });
  
+ 
+ //initialize some things...
   $(function() {
+      
+     //hide the reset until somebody does something
+      $("#reset").hide();  
+      
+    var lightblue = "<li>A, Adam</li><li>A, Tristan</li><li>D, Christopher</li><li>G, Shane</li><li>G, Jack</li><li>H, Zachary</li><li>H, Sammy</li><li>S, Ryan</li><li>Z, Harrison</li>"; 
+    var gold ="<li> C, Mason</li><li> C, Matthew</li><li> H, Bobby</li><li> L, Collin</li><li> L, Evan</li><li> M, Logan</li><li> O, Nik</li><li> S, Aj</li><li> U, Tanner</li>";
+    var forest = "<li> B, Hunter </li><li>G, Samuel </li><li>I, Michael </li><li> K, Peter </li><li>M, Shane </li><li> M, Aidan </li><li> P, Joey </li><li> R, Paedar </li><li> U, Clayton </li>";
+    var orange ="<li>A, John </li><li> C, Andrew </li><li> G, Edward </li><li> M, Walker </li><li> P, Jack </li><li> R, Collin </li><li> R, Henry </li><li> S, Jack </li>";
+    var silver = "<li>B, Aidan </li><li>C, Mark </li><li>D, Ethan </li><li>H, Thomas </li><li>H, Sam </li><li>M, Jordan </li><li>M, Ronan </li><li>T, Niko </li><li>T, Ryan </li>";
+    var lime = "<li>C, Joey</li><li> F, Nathan</li><li> G, Evan</li><li> J, Brady</li><li> K, Ryan</li><li> M, Michael</li><li> M, Vincent</li><li> M, Michael</li><li> M, Jake</li>";
+    var black = "<li> Celotto, Nicholas</li><li> Ciocca, Jake</li><li> D'Anna, Salvatore</li><li> Derda, Ian</li><li> Ippolito, Anthony</li><li> Masotti, Robert</li><li> Putnam, Kyle</li><li> Samu, Rayaan</li><li> Thomas, Cooper</li>";
+    var maroon ="<li>Chapman, Evan</li><li> Harris, Caleb</li><li> McDermott, Aedan</li><li> Mirrione, Joseph</li><li> Spalding, Cole</li><li> Spalding, Evan</li><li> St. Denis, Drew</li><li> Tandler, Jackson</li><li> Wickam-White, Dylan</li>";
+          
+     ///dragon drops       
+        $( "ul.droptrue" ).sortable({
+          connectWith: "ul",
+           connectWith: "ul"
+        });
      
-    $("#reset").hide();  
-var lightblue = "<li>A, Adam</li><li>A, Tristan</li><li>D, Christopher</li><li>G, Shane</li><li>G, Jack</li><li>H, Zachary</li><li>H, Sammy</li><li>S, Ryan</li><li>Z, Harrison</li>"; 
-var gold ="<li> C, Mason</li><li> C, Matthew</li><li> H, Bobby</li><li> L, Collin</li><li> L, Evan</li><li> M, Logan</li><li> O, Nik</li><li> S, Aj</li><li> U, Tanner</li>";
-var forest = "<li> B, Hunter </li><li>G, Samuel </li><li>I, Michael </li><li> K, Peter </li><li>M, Shane </li><li> M, Aidan </li><li> P, Joey </li><li> R, Paedar </li><li> U, Clayton </li>";
-var orange ="<li>A, John </li><li> C, Andrew </li><li> G, Edward </li><li> M, Walker </li><li> P, Jack </li><li> R, Collin </li><li> R, Henry </li><li> S, Jack </li>";
-var silver = "<li>B, Aidan </li><li>C, Mark </li><li>D, Ethan </li><li>H, Thomas </li><li>H, Sam </li><li>M, Jordan </li><li>M, Ronan </li><li>T, Niko </li><li>T, Ryan </li>";
-var lime = "<li>C, Joey</li><li> F, Nathan</li><li> G, Evan</li><li> J, Brady</li><li> K, Ryan</li><li> M, Michael</li><li> M, Vincent</li><li> M, Michael</li><li> M, Jake</li>";
-var black = "<li> Celotto, Nicholas</li><li> Ciocca, Jake</li><li> D'Anna, Salvatore</li><li> Derda, Ian</li><li> Ippolito, Anthony</li><li> Masotti, Robert</li><li> Putnam, Kyle</li><li> Samu, Rayaan</li><li> Thomas, Cooper</li>";
-var maroon ="<li>Chapman, Evan</li><li> Harris, Caleb</li><li> McDermott, Aedan</li><li> Mirrione, Joseph</li><li> Spalding, Cole</li><li> Spalding, Evan</li><li> St. Denis, Drew</li><li> Tandler, Jackson</li><li> Wickam-White, Dylan</li>";
-      
- ///dragon drops       
-    $( "ul.droptrue" ).sortable({
-      connectWith: "ul",
-       connectWith: "ul"
-    });
- 
-    $( "ul.dropfalse" ).sortable({
-      connectWith: "ul",
-      dropOnEmpty: false
-    });
- 
-    $( "#sortable1, #sortable2").disableSelection();
-  
-  //source list for teams
-  $(".butt-team").click(function() {
-     $("#team-color").text($(this).text());
-      
-    var teamname = eval($(this).text());
-   $("#sortable1").empty();
-   //$("#sortable2").empty();
-   $("#sortable1").append(teamname);
-   
-    $(".source li").click(function() {
-        $('#sortable2').append($(this)); 
+        $( "ul.dropfalse" ).sortable({
+          connectWith: "ul",
+          dropOnEmpty: false
         });
-        
-   $(".target li").click(function() {
-        $('#sortable1').append($(this)); 
-        });
-  });
-  //minimize team list
-  $("#show-hide").click(function() {
-     if($("#show-hide").text() === "-") { 
-      $(".lineups").hide();
-      $("#show-hide").text("+");
-     } else  if($("#show-hide").text() === "+") { 
-      $(".lineups").show();
-      $("#show-hide").text("-");
-     }   
-  });
+     
+        $( "#sortable1, #sortable2").disableSelection();
+      
+      //source list for teams
+      $(".butt-team").click(function() {
+        $(".butt-team").removeClass("yellow");
+         $("#team-color").text($(this).text());
+          $("#sortable1").empty();
+           $("#sortable2").empty();
+           $(this).addClass("yellow");
+        var teamname = eval($(this).text());
+     
+       $("#sortable1").append(teamname);
+       
+        $(".source li").click(function() {
+            $('#sortable2').append($(this)); 
+            });
+            
+       $(".target li").click(function() {
+            $('#sortable1').append($(this)); 
+            });
+      });
+      
+      //minimize team list
+      $(".show-hide").click(function() {
+         if($(".show-hide").text() === "-") { 
+          $(".lineups").hide();
+          $(".show-hide").text("+");
+         } else {
+          $(".lineups").show();
+          $(".show-hide").text("-");
+         }   
+      });
   
 });  
  </script>
