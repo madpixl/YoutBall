@@ -19,7 +19,9 @@
     <![endif]-->
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<style>
+<style type="text/css" media="screen">
+ @media screen {
+     
 button
 {
    margin: .5em .15em;
@@ -127,6 +129,52 @@ button
 {
    float: right;
 }
+ }
+ </style>
+ 
+ 
+<style type="text/css" media="print">
+@media print {
+    body {
+     font-size:.85em; 
+     padding:.1em;
+     margin:0; 
+    }
+   h1 {
+    font-size:.9em;  
+   }
+.lineups li {
+       float:left;
+       list-style:none;
+       margin-left:4px;
+       width:44%;
+    }
+    
+ button {
+ display:none;  
+}
+.periods {
+ margin-top: 1em; 
+ padding-top: 1em; 
+}
+.periods .panel {
+ width:38%;
+ float:left;
+ height:auto; 
+ margin-left:3%;
+ border:none; 
+}
+    .periods ul li {
+    padding: .25em .15em;
+    line-height: auto; 
+    margin:2px;
+    list-style: none;
+}
+.periods .panel-header {
+ border-bottom: 1px solid #666666;  
+}
+
+}
 </style>
 </head>
 <body>
@@ -157,7 +205,7 @@ button
         </ul>
       </div>
       <div class="col-md-6 lineups">
-        <h3>Selected Players</h3>
+        <h3>Lineup</h3>
         <ul id="sortable2" class="droptrue target">
         </ul>
         <button id="generate">Go</button>
@@ -171,18 +219,7 @@ button
   </div>
 </div>
 <script>
-//Move things back and forth
-$(".source li").click(function() {
-  $(".target li").append($(this));
-  $(".alert").text("");  
-});
-
-$("#sortable2 li").click(function() {
-  $(".source li").append($(this));
-  $(".alert").text(""); 
-});
-
-
+  
 // Reset should empty select Players
 $("#reset").click( function() {  
      $("#periods").empty();
@@ -195,7 +232,7 @@ $("#reset").click( function() {
 //Generate rotation - herewego
  $("#generate").click( function() {
      if($("#sortable2 li").length < 6 ) {
-     $(".alert").text("You don't need a rotation with 5 players or less"); 
+     $(".alert").text("You don't need a rotation. There are 5 players or less."); 
      }
      if($("#sortable2 li").length > 5 ) {
           $(".alert").text("");
@@ -273,6 +310,7 @@ $("#reset").click( function() {
      
        $("#sortable1").append(teamname);
        
+       
         $(".source li").click(function() {
             $('#sortable2').append($(this)); 
             });
@@ -295,6 +333,5 @@ $("#reset").click( function() {
   
 });  
  </script>
- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Rec Basketball 8 Player Rotation Generator</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/madpixl/YoutBall/blob/master/README.md" property="cc:attributionName" rel="cc:attributionURL">Tom G. Madpixl</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://rawgit.com/madpixl/YoutBall/master/rotation2015.html" rel="dct:source">https://rawgit.com/madpixl/YoutBall/master/rotation2015.html</a>.
 </body>
 </html>
