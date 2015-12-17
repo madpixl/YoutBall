@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+<head>
+<style>
+body
+{
+   width: auto;
+   font-family: Arial, Helvetica, sans-serif;
+   background-color: #ffffff;
+}
+label
+{
+   margin: 2px;
+   float: left;
+   white-space: nowrap;
+   width: 190px;
+   font-size: 11px;
+   color: #000077;
+   text-align: left;
+}
+label input
+{
+   float: right;
+   margin-right: 2px;
+   width: 75%;
+}
+.tee-up
+{
+   max-width: 24%;
+   float: left;
+   margin: 0 4px;
+   display: inline-block;
+}
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+ width:320px;
+}
+}
+.button-group
+{
+   clear: both;
+   margin: 1em;
+   wiidth: 100%;
+   text-align: center;
+}
+br
+{
+   clear: both;
+}
+ul
+{
+   float: left;
+   list-style: none;
+   width: 11%;
+   min-width: 170px;
+   margin: 0;
+   padding: 0;
+   font-size: 100%;
+}
+#container-rotation
+{
+   float: left;
+   width: 100%;
+   height: auto;
+   min-height: 30px;
+}
+li
+{
+   border: solid 1px #aaa;
+   margin: 0;
+   padding: .25em;
+   width: auto;
+}
+li:first-child
+{
+   font-weight: bold;
+   background-color: #99aaff;
+   padding: 1%;
+   border-bottom: solid 2px;
+}
+
+@media print {
+#form1
+{
+   display: block;
+}
+#container-rotation
+{
+   display: block;
+   margin: 0px;
+   padding: 0px;
+   width: 900px; /* width: 7in; */
+   height: 670px; /* or height: 9.5in; */
+   clear: both;
+   background-color: #ffffff;
+   page-break-after: always;
+   position: relative;
+   top: 0;
+   right: 0;
+   left: 0;
+   bottom: 0;
+}
+#container-rotation ul
+{
+   min-width: 12%;
+}
+}
+</style>
+<script language="javascript">
+
+function drawGrid() { 
+
+var j=0;
+
+target = document.forms[0].getElementsByTagName('input');
+
+player = new Array();
+
+for(var i=0; i<target.length; i++) {
+
+	if (target[i].value) {
+
+	player[j] = target[i].value;
+
+		j++;
+
+	}
+
+}
+
+	if (player.length > 0) {
+
+	var players = player.length;
+    
+    var showedUp = players;
+        
+	var container = document.getElementById('container-rotation');
+ 
+	 
+    container.innerHTML = "<h4>"+ showedUp +  " Player Rotation </h4>";
+    
+    var	period =1;
+
+	var	columns = 8;
+
+	var	positions = 0;
+
+	var	loops = Math.round(columns / players) + 1;
+
+	var	ul = document.createElement('ul');
+
+	var	lititle = document.createElement('li');
+
+		 lititle.innerHTML = "Period "+period;
+
+			 ul.appendChild(lititle);
+
+			 
+
+		// fill 40 columns
+
+				while(columns > 0) {
+
+					//loop through players
+
+						for (var ii=0; ii<player.length; ii++){
+
+						       
+
+								 if( positions == 5 ) {
+
+									  if (columns>0) { 
+
+										container.appendChild(ul);
+
+										columns--;	
+
+										period++;
+
+										ul = document.createElement('ul');
+
+										ul.setAttribute('id','row-'+positions);
+
+										lititle = document.createElement('li');
+
+										lititle.innerHTML = "Period "+period;
+
+										ul.appendChild(lititle);
+
+										positions=0;
+
+										}  
+
+								 }
+
+								li = document.createElement('li');
+
+								li.setAttribute('id','t'+ii);
+
+								li.innerHTML= player[ii];
+
+								ul.appendChild(li);
+
+							if(ii == player.length) {
+
+							ii=0;	
+
+							}  
+
+							positions++;
+
+							
+
+						 } 
+
+				}
+
+		}
+
+		return false;
+
+	//	alert(container.innerHTML);
+
+ }
+ 
+</script>
+<title>8 Period Player Rotation</title>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <h4>Enter players and click Submit to generate rotation.</h4>
+  <fieldset>
+    <div class="tee-up">
+      <label for="p1">P. 1:
+        <input type="text" name="p1" id="p1" />
+      </label>
+      <label for="p2">P. 2:
+        <input type="text" name="p2" id="p2" />
+      </label>
+      <label for="p3">P. 3:
+        <input type="text" name="p3" id="p3" />
+      </label>
+    </div>
+    <div class="tee-up">
+      <label for="p4">P. 4:
+        <input type="text" name="p4" id="p4" />
+      </label>
+      <label for="p5"> P. 5:
+        <input type="text" name="p5" id="p5" />
+      </label>
+      <label for="p6">P. 6:
+        <input type="text" name="p6" id="p6" />
+      </label>
+    </div>
+    <div class="tee-up">
+      <label for="p7">P. 7:
+        <input type="text" name="p7" id="p7" />
+      </label>
+      <label for="p8">P. 8:
+        <input type="text" name="p8" id="p8" />
+      </label>
+      <label for="p9">P. 9:
+        <input type="text" name="p9" id="p9" />
+      </label>
+    </div>
+    <div class="tee-up">
+      <label for="p10">P. 10:
+        <input type="text" name="p10" id="p10" />
+      </label>
+      <label for="p11">P. 11:
+        <input type="text" name="p11" id="p11" />
+      </label>
+      <label for="p12">P. 12:
+        <input type="text" name="p12" id="p12" />
+      </label>
+    </div>
+  </fieldset>
+  <p class="button-group">
+    <button type="button" name="gen" id="gen" onclick="drawGrid()" value="Submit">Submit</button>
+    <button type="reset" name="Reset" id="button" value="Reset">Reset</button>
+  </p>
+</form>
+<div id="container-rotation"> Game Rotation </div>
+</body>
+</html>
